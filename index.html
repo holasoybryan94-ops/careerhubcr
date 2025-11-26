@@ -10,50 +10,64 @@
 
 <style>
     :root {
-        --primary: #0D4C3A;
-        --primary-light: #E6F2EF;
-        --accent: #092E22;
+        --primary: #0D4C3A;         /* Verde del logo */
+        --cream: #FFF7EB;          /* Crema claro premium */
+        --light-bg: #E6F2EF;
         --text-dark: #1a1a1a;
         --text-light: #ffffff;
         --radius: 14px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
         font-family: 'Poppins', sans-serif;
-        background: var(--primary-light);
+        background: var(--light-bg);
         color: var(--text-dark);
         line-height: 1.6;
     }
 
-    /* HEADER LIMPIO SOLO LOGO */
+    /* HEADER — COLOR CREMA + LOGO */
     header {
-        background: linear-gradient(135deg, #ffffff, #E9F5F1);
-        padding: 40px 0;
+        background: var(--cream);
+        padding: 55px 0;
         text-align: center;
-        border-bottom: 1px solid #d6e5df;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     }
 
+    /* LOGO FADE IN PERMANENTE */
     header img {
         width: 320px;
         max-width: 85vw;
         height: auto;
-        filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.20));
         opacity: 0;
+        animation: fadeLogo 1.2s ease forwards;
+        filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
         transform: translateY(20px);
-        animation: fadeDown 0.9s ease forwards;
     }
 
-    @keyframes fadeDown {
+    @keyframes fadeLogo {
         to {
             opacity: 1;
             transform: translateY(0);
         }
     }
+
+    /* BOTÓN DE INSTAGRAM */
+    .insta-btn {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 10px 20px;
+        background: #E1306C;
+        color: white;
+        text-decoration: none;
+        border-radius: 40px;
+        font-size: 15px;
+        font-weight: 600;
+        transition: 0.2s;
+    }
+    .insta-btn:hover { opacity: 0.8; }
 
     /* NAV */
     nav {
@@ -61,16 +75,13 @@
         padding: 15px;
         text-align: center;
         border-bottom: 1px solid #ddd;
-        z-index: 900;
     }
     nav a {
         margin: 0 18px;
         text-decoration: none;
         color: var(--primary);
         font-weight: 600;
-        transition: 0.2s;
     }
-    nav a:hover { opacity: 0.6; }
 
     /* SECCIONES */
     section {
@@ -106,7 +117,7 @@
         border-radius: var(--radius);
         box-shadow: 0 3px 10px rgba(0,0,0,0.07);
         margin-bottom: 20px;
-        border-left: 6px solid var(--accent);
+        border-left: 6px solid var(--primary);
         font-style: italic;
     }
     .testimonio .autor {
@@ -114,6 +125,16 @@
         color: var(--primary);
         margin-top: 10px;
         font-style: normal;
+    }
+
+    /* INSTAGRAM FEED */
+    .insta-frame {
+        width: 100%;
+        border: 0;
+        overflow: hidden;
+        height: 450px;
+        border-radius: 14px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.10);
     }
 
     /* FOOTER */
@@ -150,15 +171,20 @@
 
 <body>
 
-<!-- HEADER con SOLO LOGO -->
+<!-- HEADER LOGO + IG -->
 <header>
     <img src="logo.png" alt="CareerHub Logo">
+
+    <a href="https://instagram.com/TU_INSTAGRAM" target="_blank" class="insta-btn">
+        📸 Síguenos en Instagram
+    </a>
 </header>
 
 <!-- NAV -->
 <nav>
     <a href="#servicios">Servicios</a>
     <a href="#testimonios">Testimonios</a>
+    <a href="#instagram">Instagram</a>
     <a href="#agendar">Agenda</a>
     <a href="#contacto">Contacto</a>
 </nav>
@@ -167,10 +193,10 @@
 <section id="servicios">
     <h2>Servicios CareerHub</h2>
     <ul>
-        <li><strong>Revisión y optimización de CV</strong><br>Mejoramos tu CV para destacar tus fortalezas y aumentar tus oportunidades laborales.</li>
-        <li><strong>Preparación para entrevistas</strong><br>Simulación de entrevista, retroalimentación profesional y técnicas avanzadas.</li>
-        <li><strong>Optimización de LinkedIn</strong><br>Potenciamos tu perfil para atraer reclutadores y aumentar visibilidad.</li>
-        <li><strong>Mentoría laboral personalizada</strong><br>Sesiones 1:1 enfocadas en tu crecimiento profesional y empleabilidad.</li>
+        <li><strong>Revisión y optimización de CV</strong><br>Mejoramos tu CV para destacar tus fortalezas.</li>
+        <li><strong>Preparación para entrevistas</strong><br>Simulación profesional con retroalimentación.</li>
+        <li><strong>Optimización de LinkedIn</strong><br>Aumenta tu visibilidad ante reclutadores.</li>
+        <li><strong>Mentoría laboral personalizada</strong><br>Sesiones 1:1 dirigidas a tu crecimiento.</li>
     </ul>
 </section>
 
@@ -179,29 +205,42 @@
     <h2>Testimonios</h2>
 
     <div class="testimonio">
-        “Gracias al servicio de CareerHub, conseguí dos entrevistas en menos de una semana. El CV quedó increíble.”
+        “Gracias al servicio de CareerHub, conseguí dos entrevistas rápido.”
         <div class="autor">— Daniela M.</div>
     </div>
 
     <div class="testimonio">
-        “Me ayudaron a mejorar mi LinkedIn y noté un aumento inmediato en las visitas y mensajes de reclutadores.”
+        “Mi LinkedIn empezó a recibir mensajes de reclutadores.”
         <div class="autor">— Fernando R.</div>
     </div>
 
     <div class="testimonio">
-        “Las sesiones de práctica de entrevistas me dieron seguridad. Terminé contratada en una empresa internacional.”
+        “Las prácticas de entrevista me dieron la confianza para obtener el trabajo.”
         <div class="autor">— Sofía L.</div>
     </div>
+</section>
+
+<!-- INSTAGRAM FEED -->
+<section id="instagram">
+    <h2>Instagram</h2>
+
+    <iframe 
+        src="https://snapwidget.com/embed/YOUR_WIDGET" 
+        class="insta-frame" 
+        allowtransparency="true">
+    </iframe>
+
+    <p style="text-align:center; margin-top:10px;">
+        *Crea tu feed gratis en <strong>snapwidget.com</strong>
+    </p>
 </section>
 
 <!-- AGENDA -->
 <section id="agendar">
     <h2>Agenda tu sesión</h2>
-    <p style="text-align:center;">Selecciona tu servicio y elige el horario que más te convenga.</p>
-
     <div 
         class="calendly-inline-widget" 
-        data-url="https://calendly.com/jobs-careerhub/?utm_source=ig&utm_medium=social&utm_content=link_in_bio" 
+        data-url="https://calendly.com/jobs-careerhub/" 
         style="min-width:320px;height:650px;">
     </div>
     <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -211,7 +250,7 @@
 <section id="contacto">
     <h2>Contacto</h2>
     <p><strong>Email:</strong> info@careerhub.com</p>
-    <p><strong>WhatsApp:</strong> +506 0000-0000</p>
+    <p><strong>WhatsApp:</strong> +506 7259 5379</p>
 </section>
 
 <footer>
@@ -219,7 +258,7 @@
 </footer>
 
 <!-- WHATSAPP -->
-<a href="https://wa.me/50600000000" class="whatsapp-btn" target="_blank">💬</a>
+<a href="https://wa.me/50672595379" class="whatsapp-btn" target="_blank">💬</a>
 
 </body>
 </html>
