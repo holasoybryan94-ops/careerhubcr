@@ -10,9 +10,9 @@
 
 <style>
     :root {
-        --primary: #0D4C3A;        /* Verde del logo */
-        --primary-light: #E6F2EF; /* Verde pastel claro */
-        --accent: #0A3A2C;        /* Verde profundo */
+        --primary: #0D4C3A;        /* Verde principal del logo */
+        --primary-light: #E6F2EF; /* Verde pastel */
+        --accent: #092E22;        /* Verde profundo */
         --text-dark: #1a1a1a;
         --text-light: #ffffff;
         --radius: 14px;
@@ -34,34 +34,59 @@
     .slide-up { opacity: 0; transform: translateY(20px); animation: slideUp 1s ease forwards; }
     @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 
-    /* HEADER CLARO */
+    /* HEADER OSCURO */
     header {
-        background: #F9FCFB; /* SUPER CLARO */
-        color: var(--primary);
-        padding: 80px 20px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: var(--text-light);
+        padding: 100px 20px 110px 20px;
         text-align: center;
         border-bottom-left-radius: 40px;
         border-bottom-right-radius: 40px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.25);
     }
-    header img {
-        width: 300px;
-        margin-bottom: 25px;
+
+    /* Contenedor del logo */
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
+    /* Logo con sombra + animación */
+    .logo-animated {
+        width: 320px;
+        max-width: 85vw;
+        height: auto;
+        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+        opacity: 0;
+        transform: translateY(25px) scale(0.95);
+        animation: logoEnter 1.4s ease forwards;
+    }
+
+    @keyframes logoEnter {
+        0% { opacity: 0; transform: translateY(25px) scale(0.95); }
+        60% { opacity: 1; transform: translateY(0) scale(1.03); }
+        100% { transform: translateY(0) scale(1); }
+    }
+
     header h1 {
-        font-size: 48px;
+        font-size: 46px;
         font-family: 'Lora', serif;
         font-weight: 600;
+        margin-top: 20px;
+        animation: fadeIn 1.6s ease;
     }
+
     header p {
         margin-top: 12px;
         font-size: 20px;
         opacity: 0.9;
+        animation: fadeIn 1.9s ease;
     }
 
     .btn-main {
-        background: var(--primary);
-        color: var(--text-light);
+        background: var(--text-light);
+        color: var(--primary);
         padding: 14px 26px;
         border-radius: var(--radius);
         text-decoration: none;
@@ -69,8 +94,9 @@
         display: inline-block;
         margin-top: 25px;
         transition: 0.25s;
+        animation: fadeIn 2.2s ease;
     }
-    .btn-main:hover { background: var(--accent); }
+    .btn-main:hover { background: var(--primary-light); }
 
     /* NAV */
     nav {
@@ -97,6 +123,7 @@
         max-width: 900px;
         margin: auto;
     }
+
     h2 {
         color: var(--primary);
         font-size: 32px;
@@ -167,15 +194,17 @@
         transition: 0.2s;
     }
     .whatsapp-btn:hover { transform: scale(1.1); }
+
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<header id="inicio" class="fade-in">
-    <img 
-        src="data:image/png;base64,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" />
+<!-- HEADER -->
+<header id="inicio">
+    <div class="logo-container">
+        <img src="logo.png" alt="CareerHub Logo" class="logo-animated">
+    </div>
 
     <h1>CareerHub CR</h1>
     <p>Impulsamos tu empleabilidad con herramientas, asesoría experta y sesiones personalizadas.</p>
