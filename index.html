@@ -10,9 +10,9 @@
 
 <style>
     :root {
-        --primary: #0D4C3A;         /* Verde del logo */
-        --cream: #FFF7EB;          /* Crema claro premium */
-        --light-bg: #E6F2EF;
+        --primary: #0D4C3A;          /* Verde del logo */
+        --cream: #FAF2E4;            /* Crema claro CORRECTO */
+        --light-bg: #E6F2EF;         
         --text-dark: #1a1a1a;
         --text-light: #ffffff;
         --radius: 14px;
@@ -27,47 +27,31 @@
         line-height: 1.6;
     }
 
-    /* HEADER — COLOR CREMA + LOGO */
+    /* HEADER — crema #FAF2E4 con LOGO centrado */
     header {
         background: var(--cream);
-        padding: 55px 0;
+        padding: 70px 0;
         text-align: center;
         border-bottom: 1px solid rgba(0,0,0,0.08);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.10);
     }
 
-    /* LOGO FADE IN PERMANENTE */
+    /* LOGO — fade in suave */
     header img {
         width: 320px;
         max-width: 85vw;
         height: auto;
         opacity: 0;
-        animation: fadeLogo 1.2s ease forwards;
-        filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
-        transform: translateY(20px);
+        transform: translateY(10px);
+        animation: fadeLogoSoft 1.8s ease forwards;
+        filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.20));
     }
 
-    @keyframes fadeLogo {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    @keyframes fadeLogoSoft {
+        0% { opacity: 0; transform: translateY(15px); }
+        50% { opacity: 0.6; transform: translateY(5px); }
+        100% { opacity: 1; transform: translateY(0); }
     }
-
-    /* BOTÓN DE INSTAGRAM */
-    .insta-btn {
-        display: inline-block;
-        margin-top: 18px;
-        padding: 10px 20px;
-        background: #E1306C;
-        color: white;
-        text-decoration: none;
-        border-radius: 40px;
-        font-size: 15px;
-        font-weight: 600;
-        transition: 0.2s;
-    }
-    .insta-btn:hover { opacity: 0.8; }
 
     /* NAV */
     nav {
@@ -148,7 +132,7 @@
         border-top-right-radius: 40px;
     }
 
-    /* WHATSAPP */
+    /* WHATSAPP BOTÓN FLOTANTE */
     .whatsapp-btn {
         position: fixed;
         bottom: 25px;
@@ -166,18 +150,39 @@
         box-shadow: 0 3px 10px rgba(0,0,0,0.25);
         z-index: 200;
     }
+
+    /* INSTAGRAM BOTÓN FLOTANTE */
+    .insta-float {
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+        background: #E1306C;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+        text-decoration: none;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+        z-index: 200;
+        transition: 0.2s;
+    }
+    .insta-float:hover {
+        transform: scale(1.12);
+        opacity: 0.9;
+    }
+
 </style>
 </head>
 
 <body>
 
-<!-- HEADER LOGO + IG -->
+<!-- HEADER SOLO LOGO -->
 <header>
     <img src="logo.png" alt="CareerHub Logo">
-
-    <a href="https://instagram.com/TU_INSTAGRAM" target="_blank" class="insta-btn">
-        📸 Síguenos en Instagram
-    </a>
 </header>
 
 <!-- NAV -->
@@ -195,8 +200,8 @@
     <ul>
         <li><strong>Revisión y optimización de CV</strong><br>Mejoramos tu CV para destacar tus fortalezas.</li>
         <li><strong>Preparación para entrevistas</strong><br>Simulación profesional con retroalimentación.</li>
-        <li><strong>Optimización de LinkedIn</strong><br>Aumenta tu visibilidad ante reclutadores.</li>
-        <li><strong>Mentoría laboral personalizada</strong><br>Sesiones 1:1 dirigidas a tu crecimiento.</li>
+        <li><strong>Optimización de LinkedIn</strong><br>Atrae más reclutadores con un perfil profesional.</li>
+        <li><strong>Mentoría laboral personalizada</strong><br>Sesiones 1:1 enfocadas en tu crecimiento.</li>
     </ul>
 </section>
 
@@ -205,33 +210,32 @@
     <h2>Testimonios</h2>
 
     <div class="testimonio">
-        “Gracias al servicio de CareerHub, conseguí dos entrevistas rápido.”
+        “El apoyo de CareerHub me consiguió entrevistas rápido.”
         <div class="autor">— Daniela M.</div>
     </div>
 
     <div class="testimonio">
-        “Mi LinkedIn empezó a recibir mensajes de reclutadores.”
+        “Mi LinkedIn recibió más visitas y mensajes después del servicio.”
         <div class="autor">— Fernando R.</div>
     </div>
 
     <div class="testimonio">
-        “Las prácticas de entrevista me dieron la confianza para obtener el trabajo.”
+        “Las prácticas de entrevista me dieron confianza y conseguí empleo.”
         <div class="autor">— Sofía L.</div>
     </div>
 </section>
 
-<!-- INSTAGRAM FEED -->
+<!-- INSTAGRAM -->
 <section id="instagram">
     <h2>Instagram</h2>
 
     <iframe 
         src="https://snapwidget.com/embed/YOUR_WIDGET" 
-        class="insta-frame" 
-        allowtransparency="true">
+        class="insta-frame">
     </iframe>
 
     <p style="text-align:center; margin-top:10px;">
-        *Crea tu feed gratis en <strong>snapwidget.com</strong>
+        *Activa tu feed en snapwidget.com
     </p>
 </section>
 
@@ -257,8 +261,12 @@
     © 2025 CareerHub CR – Todos los derechos reservados.
 </footer>
 
-<!-- WHATSAPP -->
+<!-- BOTONES FLOTANTES -->
 <a href="https://wa.me/50672595379" class="whatsapp-btn" target="_blank">💬</a>
+
+<a href="https://www.instagram.com/careerhub.latam?igsh=OWM0YW14dWV6ZmJ3" 
+   class="insta-float" 
+   target="_blank">📸</a>
 
 </body>
 </html>
