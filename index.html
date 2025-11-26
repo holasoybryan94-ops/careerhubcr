@@ -10,16 +10,15 @@
 
 <style>
     :root {
-        --primary: #0D4C3A;        /* Verde principal del logo */
-        --primary-light: #E6F2EF; /* Verde pastel */
-        --accent: #092E22;        /* Verde profundo */
+        --primary: #0D4C3A;
+        --primary-light: #E6F2EF;
+        --accent: #092E22;
         --text-dark: #1a1a1a;
         --text-light: #ffffff;
         --radius: 14px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
         font-family: 'Poppins', sans-serif;
         background: var(--primary-light);
@@ -27,86 +26,42 @@
         line-height: 1.6;
     }
 
-    /* ANIMACIONES */
-    .fade-in { opacity: 0; animation: fadeIn 1.1s ease forwards; }
-    @keyframes fadeIn { to { opacity: 1; } }
-
-    .slide-up { opacity: 0; transform: translateY(20px); animation: slideUp 1s ease forwards; }
-    @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
-
-    /* HEADER OSCURO */
+    /* HEADER LIMPIO SOLO LOGO */
     header {
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        color: var(--text-light);
-        padding: 100px 20px 110px 20px;
+        background: linear-gradient(135deg, #ffffff, #E9F5F1);
+        padding: 40px 0;
         text-align: center;
-        border-bottom-left-radius: 40px;
-        border-bottom-right-radius: 40px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        border-bottom: 1px solid #d6e5df;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
 
-    /* Contenedor del logo */
-    .logo-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Logo con sombra + animación */
-    .logo-animated {
+    header img {
         width: 320px;
         max-width: 85vw;
         height: auto;
-        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+        filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.20));
         opacity: 0;
-        transform: translateY(25px) scale(0.95);
-        animation: logoEnter 1.4s ease forwards;
+        transform: translateY(20px);
+        animation: fadeDown 0.9s ease forwards;
     }
 
-    @keyframes logoEnter {
-        0% { opacity: 0; transform: translateY(25px) scale(0.95); }
-        60% { opacity: 1; transform: translateY(0) scale(1.03); }
-        100% { transform: translateY(0) scale(1); }
+    @keyframes fadeDown {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-
-    header h1 {
-        font-size: 46px;
-        font-family: 'Lora', serif;
-        font-weight: 600;
-        margin-top: 20px;
-        animation: fadeIn 1.6s ease;
-    }
-
-    header p {
-        margin-top: 12px;
-        font-size: 20px;
-        opacity: 0.9;
-        animation: fadeIn 1.9s ease;
-    }
-
-    .btn-main {
-        background: var(--text-light);
-        color: var(--primary);
-        padding: 14px 26px;
-        border-radius: var(--radius);
-        text-decoration: none;
-        font-weight: 600;
-        display: inline-block;
-        margin-top: 25px;
-        transition: 0.25s;
-        animation: fadeIn 2.2s ease;
-    }
-    .btn-main:hover { background: var(--primary-light); }
 
     /* NAV */
     nav {
         background: #ffffff;
         padding: 15px;
         text-align: center;
-        position: sticky;
-        top: 0;
         border-bottom: 1px solid #ddd;
-        z-index: 100;
+        z-index: 900;
     }
     nav a {
         margin: 0 18px;
@@ -139,12 +94,10 @@
         padding: 25px;
         margin-bottom: 20px;
         border-radius: var(--radius);
-        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.07);
         border-left: 6px solid var(--primary);
-        transition: 0.3s;
     }
-    #servicios li:hover { transform: scale(1.02); }
-    #servicios strong { color: var(--primary); font-size: 18px; }
+    #servicios strong { color: var(--primary); }
 
     /* TESTIMONIOS */
     .testimonio {
@@ -157,9 +110,9 @@
         font-style: italic;
     }
     .testimonio .autor {
-        margin-top: 12px;
         font-weight: 600;
         color: var(--primary);
+        margin-top: 10px;
         font-style: normal;
     }
 
@@ -174,7 +127,7 @@
         border-top-right-radius: 40px;
     }
 
-    /* WHATSAPP FLOATING BUTTON */
+    /* WHATSAPP */
     .whatsapp-btn {
         position: fixed;
         bottom: 25px;
@@ -183,37 +136,27 @@
         color: white;
         width: 60px;
         height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 32px;
         text-decoration: none;
         box-shadow: 0 3px 10px rgba(0,0,0,0.25);
         z-index: 200;
-        transition: 0.2s;
     }
-    .whatsapp-btn:hover { transform: scale(1.1); }
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header id="inicio">
-    <div class="logo-container">
-        <img src="logo.png" alt="CareerHub Logo" class="logo-animated">
-    </div>
-
-    <h1>CareerHub CR</h1>
-    <p>Impulsamos tu empleabilidad con herramientas, asesoría experta y sesiones personalizadas.</p>
-    <a href="#agendar" class="btn-main">Agendar Sesión</a>
+<!-- HEADER con SOLO LOGO -->
+<header>
+    <img src="logo.png" alt="CareerHub Logo">
 </header>
 
 <!-- NAV -->
 <nav>
-    <a href="#inicio">Inicio</a>
     <a href="#servicios">Servicios</a>
     <a href="#testimonios">Testimonios</a>
     <a href="#agendar">Agenda</a>
@@ -221,21 +164,18 @@
 </nav>
 
 <!-- SERVICIOS -->
-<section id="servicios" class="fade-in">
+<section id="servicios">
     <h2>Servicios CareerHub</h2>
     <ul>
         <li><strong>Revisión y optimización de CV</strong><br>Mejoramos tu CV para destacar tus fortalezas y aumentar tus oportunidades laborales.</li>
-
         <li><strong>Preparación para entrevistas</strong><br>Simulación de entrevista, retroalimentación profesional y técnicas avanzadas.</li>
-
         <li><strong>Optimización de LinkedIn</strong><br>Potenciamos tu perfil para atraer reclutadores y aumentar visibilidad.</li>
-
-        <li><strong>Mentoría laboral personalizada</strong><br>Sesiones 1:1 enfocadas en estrategia, crecimiento profesional y empleabilidad.</li>
+        <li><strong>Mentoría laboral personalizada</strong><br>Sesiones 1:1 enfocadas en tu crecimiento profesional y empleabilidad.</li>
     </ul>
 </section>
 
 <!-- TESTIMONIOS -->
-<section id="testimonios" class="fade-in">
+<section id="testimonios">
     <h2>Testimonios</h2>
 
     <div class="testimonio">
@@ -255,7 +195,7 @@
 </section>
 
 <!-- AGENDA -->
-<section id="agendar" class="fade-in">
+<section id="agendar">
     <h2>Agenda tu sesión</h2>
     <p style="text-align:center;">Selecciona tu servicio y elige el horario que más te convenga.</p>
 
@@ -268,7 +208,7 @@
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto" class="fade-in">
+<section id="contacto">
     <h2>Contacto</h2>
     <p><strong>Email:</strong> info@careerhub.com</p>
     <p><strong>WhatsApp:</strong> +506 0000-0000</p>
@@ -278,7 +218,7 @@
     © 2025 CareerHub CR – Todos los derechos reservados.
 </footer>
 
-<!-- WHATSAPP BOTÓN -->
+<!-- WHATSAPP -->
 <a href="https://wa.me/50600000000" class="whatsapp-btn" target="_blank">💬</a>
 
 </body>
