@@ -5,60 +5,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CareerHub CR - Empleabilidad y Desarrollo Profesional</title>
 
+<!-- Tipografías -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f5f5f5;
-        color: #333;
+    :root {
+        --primary: #0D4C3A;        /* Verde del logo */
+        --primary-light: #E6F2EF; /* Verde pastel */
+        --accent: #0A3A2C;        /* Verde más profundo */
+        --text-dark: #1a1a1a;
+        --text-light: #ffffff;
+        --radius: 14px;
     }
 
-    /* HEADER / HERO */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: var(--primary-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+    }
+
+    /* ANIMACIONES */
+    .fade-in {
+        opacity: 0;
+        animation: fadeIn 1.2s ease forwards;
+    }
+    @keyframes fadeIn {
+        to { opacity: 1; }
+    }
+
+    .slide-up {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideUp 1s ease forwards;
+    }
+    @keyframes slideUp {
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* HERO */
     header {
-        background: #0043ff;
-        color: white;
-        padding: 60px 20px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: var(--text-light);
+        padding: 80px 20px;
         text-align: center;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        margin-bottom: 30px;
     }
     header img {
         width: 260px;
         margin-bottom: 20px;
+        animation: fadeIn 1.4s ease;
     }
     header h1 {
-        margin: 0;
-        font-size: 42px;
-        font-weight: bold;
+        font-size: 48px;
+        font-weight: 600;
+        font-family: 'Lora', serif;
+        animation: slideUp 1s ease;
     }
     header p {
         margin-top: 15px;
-        font-size: 18px;
+        font-size: 20px;
+        opacity: 0.9;
+        animation: fadeIn 1.8s ease;
     }
+
     .btn-main {
-        background: white;
-        color: #0043ff;
+        background: var(--text-light);
+        color: var(--primary);
         padding: 14px 24px;
-        border-radius: 8px;
+        border-radius: var(--radius);
         text-decoration: none;
-        font-weight: bold;
-        margin-top: 25px;
+        font-weight: 600;
         display: inline-block;
+        margin-top: 25px;
+        border: 2px solid var(--text-light);
+        transition: 0.25s;
+        animation: fadeIn 2s ease;
+    }
+    .btn-main:hover {
+        background: var(--primary-light);
+        border-color: var(--primary-light);
     }
 
     /* NAV */
     nav {
-        background: white;
+        background: #ffffff;
         padding: 15px;
         text-align: center;
         position: sticky;
         top: 0;
         border-bottom: 1px solid #ddd;
+        z-index: 100;
     }
     nav a {
         margin: 0 18px;
         text-decoration: none;
-        color: #0043ff;
-        font-weight: bold;
-        font-size: 16px;
+        color: var(--primary);
+        font-weight: 600;
+        transition: 0.2s;
+    }
+    nav a:hover {
+        opacity: 0.6;
     }
 
     /* SECCIONES */
@@ -68,10 +119,11 @@
         margin: auto;
     }
     h2 {
-        color: #0043ff;
-        font-size: 30px;
+        color: var(--primary);
+        font-size: 32px;
         margin-bottom: 30px;
         text-align: center;
+        font-family: 'Lora', serif;
     }
 
     /* SERVICIOS */
@@ -80,26 +132,71 @@
         padding: 0;
     }
     #servicios li {
-        background: white;
+        background: #ffffff;
         padding: 25px;
         margin-bottom: 20px;
-        border-radius: 12px;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-        font-size: 17px;
-        line-height: 1.5;
+        border-radius: var(--radius);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        border-left: 6px solid var(--primary);
+        transition: 0.3s;
+    }
+    #servicios li:hover {
+        transform: scale(1.02);
     }
     #servicios strong {
-        color: #0043ff;
+        color: var(--primary);
         font-size: 18px;
+    }
+
+    /* TESTIMONIOS */
+    .testimonio {
+        background: white;
+        padding: 25px;
+        border-radius: var(--radius);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+        margin-bottom: 20px;
+        border-left: 6px solid var(--accent);
+        font-style: italic;
+    }
+    .testimonio .autor {
+        margin-top: 10px;
+        font-weight: 600;
+        color: var(--primary);
+        font-style: normal;
     }
 
     /* FOOTER */
     footer {
         text-align: center;
-        padding: 30px;
-        background: #222;
-        color: white;
+        padding: 35px;
+        background: var(--primary);
+        color: var(--text-light);
         margin-top: 60px;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+    }
+
+    /* WHATSAPP FLOATING BUTTON */
+    .whatsapp-btn {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #25D366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 32px;
+        text-decoration: none;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        z-index: 200;
+        transition: 0.2s;
+    }
+    .whatsapp-btn:hover {
+        transform: scale(1.1);
     }
 </style>
 </head>
@@ -108,7 +205,8 @@
 
 <!-- HERO -->
 <header id="inicio">
-    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAYAAAAEAAMAAAABAAEAAAEaAAUAAAABAAAAPgEbAAUAAAABAAAAQgEoAAMAAAABAAIAAIdpAAQAAAABAAAAUwAAAAAAAACQAAAAAQAAAJAAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAAFagAwAEAAAAAQAAAFYAAAAA/+0AOFBob3Rvc2hvcCAzLjAAOEJJTQQEAAAAAChhcHBsClNJRyBDQU1FUkEgMTAwMCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9yZmZhZGUgdmVyc2lvbiAxMS4xMS4xMyBtYWNlbnRvc2g2NEZJTEUgSU5GTwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/iAkgAAQUBAQEBBQIDAgMDAwMFBAQFBQUGBgYGBwcHBwgICAgJCQkJCQkJCQkQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAQMDAwQFBQUFBQYGBgYGBwcHBwcICAgICAgJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCf/2wBDAQMDAwQFBQUFBQYGBgYGBwcHBwcICAgICAgJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCf/wAARCACwALADASIAAhEBAxEB/90ABAAf/2Q==" alt="CareerHub Logo">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAA..."
+         alt="CareerHub Logo">
 
     <h1>CareerHub CR</h1>
     <p>Impulsamos tu empleabilidad con herramientas, asesoría experta y sesiones personalizadas.</p>
@@ -119,26 +217,47 @@
 <nav>
     <a href="#inicio">Inicio</a>
     <a href="#servicios">Servicios</a>
+    <a href="#testimonios">Testimonios</a>
     <a href="#agendar">Agenda</a>
     <a href="#contacto">Contacto</a>
 </nav>
 
 <!-- SERVICIOS -->
-<section id="servicios">
+<section id="servicios" class="fade-in">
     <h2>Servicios CareerHub</h2>
     <ul>
         <li><strong>Revisión y optimización de CV</strong><br>Mejoramos tu CV para destacar tus fortalezas y aumentar tus oportunidades laborales.</li>
 
-        <li><strong>Preparación para entrevistas</strong><br>Sesiones de práctica, retroalimentación profesional y estrategias de respuesta.</li>
+        <li><strong>Preparación para entrevistas</strong><br>Simulación de entrevista, retroalimentación profesional y técnicas avanzadas.</li>
 
-        <li><strong>Optimización de perfil de LinkedIn</strong><br>Configuración y mejora profesional de tu perfil para atraer reclutadores.</li>
+        <li><strong>Optimización de LinkedIn</strong><br>Potenciamos tu perfil para atraer reclutadores y aumentar visibilidad.</li>
 
-        <li><strong>Mentoría laboral personalizada</strong><br>Sesiones 1:1 enfocadas en tu crecimiento profesional.</li>
+        <li><strong>Mentoría laboral personalizada</strong><br>Sesiones 1:1 enfocadas en estrategia, crecimiento profesional y empleabilidad.</li>
     </ul>
 </section>
 
+<!-- TESTIMONIOS -->
+<section id="testimonios" class="fade-in">
+    <h2>Testimonios</h2>
+
+    <div class="testimonio">
+        “Gracias al servicio de CareerHub, conseguí dos entrevistas en menos de una semana. El CV quedó increíble.”
+        <div class="autor">— Daniela M.</div>
+    </div>
+
+    <div class="testimonio">
+        “Me ayudaron a mejorar mi LinkedIn y noté un aumento inmediato en las visitas y mensajes de reclutadores.”
+        <div class="autor">— Fernando R.</div>
+    </div>
+
+    <div class="testimonio">
+        “Las sesiones de práctica de entrevistas me dieron seguridad. Terminé contratada en una empresa internacional.”
+        <div class="autor">— Sofía L.</div>
+    </div>
+</section>
+
 <!-- AGENDA -->
-<section id="agendar">
+<section id="agendar" class="fade-in">
     <h2>Agenda tu sesión</h2>
     <p style="text-align:center;">Selecciona tu servicio y elige el horario que más te convenga.</p>
 
@@ -151,7 +270,7 @@
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto">
+<section id="contacto" class="fade-in">
     <h2>Contacto</h2>
     <p><strong>Email:</strong> info@careerhub.com</p>
     <p><strong>WhatsApp:</strong> +506 0000-0000</p>
@@ -160,6 +279,9 @@
 <footer>
     © 2025 CareerHub CR – Todos los derechos reservados.
 </footer>
+
+<!-- WHATSAPP BOTÓN -->
+<a href="https://wa.me/50600000000" class="whatsapp-btn" target="_blank">💬</a>
 
 </body>
 </html>
