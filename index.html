@@ -29,6 +29,13 @@
         line-height: 1.6;
     }
 
+    /* BILINGÜE: mostrar ES/EN según data-lang */
+    .es { display: inline; }
+    .en { display: none; }
+
+    body[data-lang="en"] .es { display: none; }
+    body[data-lang="en"] .en { display: inline; }
+
     /* HEADER — DEGRADADO ANIMADO PREMIUM */
     header {
         background: linear-gradient(180deg,
@@ -57,7 +64,7 @@
         max-width: 95vw;
         height: auto;
         opacity: 0;
-        transform: translateY(22px);
+        transform: translateY(26px);
         animation: fadeLogoSoft 2.6s ease-out forwards;
         filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.22));
     }
@@ -72,25 +79,69 @@
     /* NAV */
     nav {
         background: #ffffff;
-        padding: 15px;
-        text-align: center;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
         border-bottom: 1px solid #ddd;
+        position: sticky;
+        top: 0;
+        z-index: 100;
     }
+
     nav a {
-        margin: 0 18px;
         text-decoration: none;
         color: var(--primary);
         font-weight: 600;
-        transition: 0.3s;
+        font-size: 0.95rem;
+        cursor: pointer;
+        position: relative;
     }
-    nav a:hover {
-        opacity: .6;
+
+    nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width .25s;
+    }
+
+    nav a:hover::after {
+        width: 100%;
+    }
+
+    /* Toggle de idioma */
+    .lang-toggle {
+        margin-left: auto;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+    }
+
+    .lang-toggle button {
+        border: 1px solid #ccc;
+        background: #fff;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        color: #444;
+    }
+
+    .lang-toggle button.active {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
     }
 
     /* SECCIONES */
     section {
         padding: 60px 20px;
-        max-width: 900px;
+        max-width: 1100px;
         margin: auto;
     }
 
@@ -102,35 +153,130 @@
         font-family: 'Lora', serif;
     }
 
-    /* SERVICIOS */
-    #servicios ul { list-style: none; padding: 0; }
-    #servicios li {
-        background: #ffffff;
-        padding: 25px;
-        margin-bottom: 20px;
-        border-radius: var(--radius);
-        box-shadow: 0 3px 10px rgba(0,0,0,0.07);
-        border-left: 6px solid var(--primary);
+    /* SERVICIOS – CARRUSEL */
+    .services-intro {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 25px auto;
+        font-size: 0.98rem;
     }
-    #servicios strong { color: var(--primary); }
 
-    /* TESTIMONIOS */
-    .testimonio {
-        background: #ffffff;
-        padding: 25px;
-        border-radius: var(--radius);
-        box-shadow: 0 3px 10px rgba(0,0,0,0.07);
-        margin-bottom: 20px;
-        border-left: 6px solid var(--primary);
-        font-style: italic;
-    }
-    .testimonio .autor {
-        font-weight: 600;
-        color: var(--primary);
+    .services-carousel-wrapper {
+        position: relative;
         margin-top: 10px;
     }
 
-    /* INSTAGRAM GRID */
+    .services-carousel {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 10px 5px 10px 5px;
+        scroll-behavior: smooth;
+    }
+
+    .services-carousel::-webkit-scrollbar {
+        height: 6px;
+    }
+    .services-carousel::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,0.15);
+        border-radius: 999px;
+    }
+
+    .service-card {
+        flex: 0 0 280px;
+        max-width: 300px;
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 18px 18px 16px 18px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+        scroll-snap-align: start;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.16);
+    }
+
+    .service-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    .service-pill {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+    }
+    .pill-green { background:#00C853; }
+    .pill-pink { background:#FF6D8B; }
+    .pill-purple { background:#7E57C2; }
+    .pill-blue { background:#1E88E5; }
+    .pill-yellow { background:#FDD835; }
+
+    .service-card h3 {
+        font-size: 1rem;
+        margin: 0;
+        color: var(--primary);
+    }
+
+    .service-card p {
+        font-size: 0.9rem;
+        margin: 8px 0 14px 0;
+        color: #444;
+    }
+
+    .service-cta {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--primary);
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .service-cta::after {
+        content: "➜";
+        font-size: 0.9rem;
+    }
+
+    .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(250,242,228,0.95);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        color: var(--primary);
+        z-index: 10;
+    }
+
+    .carousel-arrow.left { left: -5px; }
+    .carousel-arrow.right { right: -5px; }
+
+    @media (max-width: 720px) {
+        .carousel-arrow {
+            display: none; /* en móvil se usa swipe */
+        }
+    }
+
+    /* INSTAGRAM GRID (usa embed oficial) */
     .instagram-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -148,24 +294,17 @@
         border-radius: 18px;
         box-shadow: 0 4px 14px rgba(0,0,0,0.12);
         transition: 0.3s ease;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeInCard 1.2s ease forwards;
     }
 
     .insta-card:hover {
-        transform: scale(1.04);
+        transform: scale(1.03);
     }
 
-    @keyframes fadeInCard {
-        to { opacity: 1; transform: translateY(0); }
+    .insta-card blockquote {
+        margin: 0 auto !important;
+        max-width: 100% !important;
     }
 
-    .insta-card iframe {
-        border-radius: 14px;
-    }
-
-    /* BOTÓN VER MÁS */
     .see-more-btn {
         display: block;
         text-align: center;
@@ -181,6 +320,52 @@
     }
     .see-more-btn:hover {
         background: #0a3c2f;
+    }
+
+    /* CALENDLY CARD */
+    .calendly-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: rgba(255,255,255,0.85);
+        border-radius: 20px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        padding: 20px;
+    }
+
+    .calendly-inline-widget {
+        min-width: 320px;
+        height: 650px;
+    }
+
+    .calendly-intro {
+        text-align: center;
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+        color: #444;
+    }
+
+    /* CONTACTO */
+    #contacto p {
+        text-align: center;
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+
+    /* TESTIMONIOS AL FINAL */
+    .testimonio {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: var(--radius);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+        margin-bottom: 20px;
+        border-left: 6px solid var(--primary);
+        font-style: italic;
+    }
+    .testimonio .autor {
+        font-weight: 600;
+        color: var(--primary);
+        margin-top: 10px;
+        font-style: normal;
     }
 
     /* FOOTER */
@@ -237,97 +422,287 @@
 
 <!-- NAV -->
 <nav>
-    <a href="#servicios">Servicios</a>
-    <a href="#testimonios">Testimonios</a>
-    <a href="#instagram">Instagram</a>
-    <a href="#agendar">Agenda</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#servicios"><span class="es">Servicios</span><span class="en">Services</span></a>
+    <a href="#instagram"><span class="es">Instagram</span><span class="en">Instagram</span></a>
+    <a href="#agendar"><span class="es">Agenda</span><span class="en">Booking</span></a>
+    <a href="#contacto"><span class="es">Contacto</span><span class="en">Contact</span></a>
+    <a href="#testimonios"><span class="es">Testimonios</span><span class="en">Testimonials</span></a>
+
+    <div class="lang-toggle">
+        <button type="button" class="active" data-lang="es">ES</button>
+        <button type="button" data-lang="en">EN</button>
+    </div>
 </nav>
 
-<!-- SERVICIOS -->
+<!-- SERVICIOS - CARRUSEL -->
 <section id="servicios">
-    <h2>Servicios CareerHub</h2>
-    <ul>
-        <li><strong>Revisión y optimización de CV</strong><br>Maximiza tu perfil profesional.</li>
-        <li><strong>Preparación para entrevistas</strong><br>Prácticas con retroalimentación real.</li>
-        <li><strong>Optimización de LinkedIn</strong><br>Aumenta visibilidad y alcance laboral.</li>
-        <li><strong>Mentoría laboral personalizada</strong><br>Sesiones 1:1 para tu crecimiento.</li>
-    </ul>
+    <h2>
+        <span class="es">Servicios CareerHub</span>
+        <span class="en">CareerHub Services</span>
+    </h2>
+
+    <p class="services-intro">
+        <span class="es">
+            Elegí la opción que mejor se adapte a tu objetivo profesional. Todas las sesiones se agendan a través de Calendly.
+        </span>
+        <span class="en">
+            Choose the option that best fits your career goals. All sessions are scheduled through Calendly.
+        </span>
+    </p>
+
+    <div class="services-carousel-wrapper">
+        <button class="carousel-arrow left" onclick="scrollCarousel(-1)">‹</button>
+
+        <div class="services-carousel" id="services-carousel">
+            <!-- 1 -->
+            <a class="service-card" href="https://calendly.com/jobs-careerhub/personal-job-seeker?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
+                <div class="service-header">
+                    <span class="service-pill pill-green"></span>
+                    <h3>
+                        <span class="es">Personal Job Seeker – Suscripción Mensual</span>
+                        <span class="en">Personal Job Seeker – Monthly Subscription</span>
+                    </h3>
+                </div>
+                <p>
+                    <span class="es">¿Querés conseguir trabajo pero no tenés tiempo para buscar? Nosotros hacemos la búsqueda por vos mes a mes.</span>
+                    <span class="en">Want a new job but no time to search? We manage your job hunt for you on a monthly basis.</span>
+                </p>
+                <span class="service-cta">
+                    <span class="es">Agendar</span><span class="en">Book now</span>
+                </span>
+            </a>
+
+            <!-- 2 -->
+            <a class="service-card" href="https://calendly.com/jobs-careerhub/asesoria-con-caro?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
+                <div class="service-header">
+                    <span class="service-pill pill-pink"></span>
+                    <h3>
+                        <span class="es">Asesoría con Caro</span>
+                        <span class="en">Coaching Session with Caro</span>
+                    </h3>
+                </div>
+                <p>
+                    <span class="es">Sesión 1:1 para hablar de tu career path, dudas de empleabilidad y plan de acción personalizado.</span>
+                    <span class="en">1:1 session to review your career path, employability questions and a personalized action plan.</span>
+                </p>
+                <span class="service-cta">
+                    <span class="es">Agendar</span><span class="en">Book now</span>
+                </span>
+            </a>
+
+            <!-- 3 -->
+            <a class="service-card" href="https://calendly.com/jobs-careerhub/3-sesiones-impulso-expres?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
+                <div class="service-header">
+                    <span class="service-pill pill-purple"></span>
+                    <h3>
+                        <span class="es">3 sesiones: Impulso Exprés</span>
+                        <span class="en">3 Sessions: Express Boost</span>
+                    </h3>
+                </div>
+                <p>
+                    <span class="es">Paquete intensivo para acelerar tu búsqueda: CV, LinkedIn y preparación de entrevistas.</span>
+                    <span class="en">Intensive package to accelerate your search: CV, LinkedIn and interview prep.</span>
+                </p>
+                <span class="service-cta">
+                    <span class="es">Agendar</span><span class="en">Book now</span>
+                </span>
+            </a>
+
+            <!-- 4 -->
+            <a class="service-card" href="https://calendly.com/jobs-careerhub/outplacement-camino-al-exito-laboral?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
+                <div class="service-header">
+                    <span class="service-pill pill-purple"></span>
+                    <h3>
+                        <span class="es">Outplacement: Camino al Éxito Laboral</span>
+                        <span class="en">Outplacement: Your Path to Career Success</span>
+                    </h3>
+                </div>
+                <p>
+                    <span class="es">Acompañamiento completo para transicionar de empleo: estrategia, marca personal y entrevistas.</span>
+                    <span class="en">Full support to transition between jobs: strategy, personal branding and mock interviews.</span>
+                </p>
+                <span class="service-cta">
+                    <span class="es">Agendar</span><span class="en">Book now</span>
+                </span>
+            </a>
+
+            <!-- 5 -->
+            <a class="service-card" href="https://calendly.com/jobs-careerhub/crear-un-nuevo-cv-ingles?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
+                <div class="service-header">
+                    <span class="service-pill pill-blue"></span>
+                    <h3>
+                        <span class="es">Crear un Nuevo CV</span>
+                        <span class="en">Create a New CV (English)</span>
+                    </h3>
+                </div>
+                <p>
+                    <span class="es">Diseñamos un CV atractivo, claro y alineado a las vacantes que querés aplicar.</span>
+                    <span class="en">We build a strong, clear CV in English aligned with the roles you want.</span>
+                </p>
+                <span class="service-cta">
+                    <span class="es">Agendar</span><span class="en">Book now</span>
+                </span>
+            </a>
+
+            <!-- 6 -->
+            <a class="service-card" href="https://calendly.com/jobs-careerhub/linkedin-creando-un-perfil-efectivo?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1" target="_blank" rel="noopener">
+                <div class="service-header">
+                    <span class="service-pill pill-blue"></span>
+                    <h3>
+                        <span class="es">LinkedIn: Creando un Perfil Efectivo</span>
+                        <span class="en">LinkedIn: Building an Effective Profile</span>
+                    </h3>
+                </div>
+                <p>
+                    <span class="es">Optimizamos tu perfil para que recruiters y empresas te encuentren más rápido.</span>
+                    <span class="en">We optimize your LinkedIn so recruiters and companies can find you faster.</span>
+                </p>
+                <span class="service-cta">
+                    <span class="es">Agendar</span><span class="en">Book now</span>
+                </span>
+            </a>
+
+            <!-- 7 -->
+            <a class="service-card" href="https://calendly.com/jobs-careerhub/entrevistas?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
+                <div class="service-header">
+                    <span class="service-pill pill-yellow"></span>
+                    <h3>
+                        <span class="es">Preparación para Entrevistas</span>
+                        <span class="en">Interview Preparation</span>
+                    </h3>
+                </div>
+                <p>
+                    <span class="es">Te ayudamos con estructura de respuestas, preguntas clave y manejo de nervios.</span>
+                    <span class="en">We help with answer structure, key questions and confidence for your interviews.</span>
+                </p>
+                <span class="service-cta">
+                    <span class="es">Agendar</span><span class="en">Book now</span>
+                </span>
+            </a>
+
+            <!-- 8 -->
+            <a class="service-card" href="https://calendly.com/jobs-careerhub/practica-para-entrevistas?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
+                <div class="service-header">
+                    <span class="service-pill pill-yellow"></span>
+                    <h3>
+                        <span class="es">Práctica para Entrevistas + Feedback</span>
+                        <span class="en">Interview Practice + Feedback</span>
+                    </h3>
+                </div>
+                <p>
+                    <span class="es">Simulación real de entrevista con feedback detallado para pulir tus respuestas.</span>
+                    <span class="en">Realistic mock interview with detailed feedback to polish your answers.</span>
+                </p>
+                <span class="service-cta">
+                    <span class="es">Agendar</span><span class="en">Book now</span>
+                </span>
+            </a>
+        </div>
+
+        <button class="carousel-arrow right" onclick="scrollCarousel(1)">›</button>
+    </div>
 </section>
 
-<!-- TESTIMONIOS -->
-<section id="testimonios">
-    <h2>Testimonios</h2>
-
-    <div class="testimonio">
-        “El servicio me consiguió entrevistas muy rápido.”
-        <div class="autor">— Daniela M.</div>
-    </div>
-
-    <div class="testimonio">
-        “Mi LinkedIn recibió más visitas después del servicio.”
-        <div class="autor">— Fernando R.</div>
-    </div>
-
-    <div class="testimonio">
-        “Las prácticas me dieron la confianza para conseguir empleo.”
-        <div class="autor">— Sofía L.</div>
-    </div>
-</section>
-
-<!-- INSTAGRAM STRUCTURED GRID -->
+<!-- INSTAGRAM -->
 <section id="instagram">
     <h2>Instagram</h2>
 
     <div class="instagram-grid">
-
-        <!-- POST 1 -->
         <div class="insta-card">
-            <iframe 
-                src="https://www.instagram.com/careerhub.latam/p/DKI0WamP8hy/embed"
-                width="100%" 
-                height="550" 
-                frameborder="0"
-                scrolling="no"
-                allowtransparency="true">
-            </iframe>
+            <blockquote class="instagram-media" 
+                data-instgrm-permalink="https://www.instagram.com/careerhub.latam/p/DKI0WamP8hy/" 
+                data-instgrm-version="14">
+            </blockquote>
         </div>
 
-        <!-- POST 2 -->
         <div class="insta-card">
-            <iframe 
-                src="https://www.instagram.com/careerhub.latam/p/DKc5WchvPW4/embed"
-                width="100%" 
-                height="550" 
-                frameborder="0"
-                scrolling="no"
-                allowtransparency="true">
-            </iframe>
+            <blockquote class="instagram-media" 
+                data-instgrm-permalink="https://www.instagram.com/careerhub.latam/p/DKc5WchvPW4/" 
+                data-instgrm-version="14">
+            </blockquote>
         </div>
-
     </div>
 
     <a href="https://www.instagram.com/careerhub.latam" target="_blank" class="see-more-btn">
-        Ver más en Instagram
+        <span class="es">Ver más en Instagram</span>
+        <span class="en">See more on Instagram</span>
     </a>
 </section>
 
-<!-- AGENDA -->
+<!-- AGENDA (CALENDLY) -->
 <section id="agendar">
-    <h2>Agenda tu sesión</h2>
-    <div 
-        class="calendly-inline-widget" 
-        data-url="https://calendly.com/jobs-careerhub/" 
-        style="min-width:320px;height:650px;">
+    <h2>
+        <span class="es">Agenda tu sesión</span>
+        <span class="en">Book your session</span>
+    </h2>
+
+    <p class="calendly-intro">
+        <span class="es">Elegí el servicio que más te interese desde el carrusel o reservá directamente en la agenda general.</span>
+        <span class="en">Pick the service you prefer from the carousel or book directly in the general calendar.</span>
+    </p>
+
+    <div class="calendly-wrapper">
+        <div 
+            class="calendly-inline-widget" 
+            data-url="https://calendly.com/jobs-careerhub/" >
+        </div>
     </div>
+
     <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </section>
 
 <!-- CONTACTO -->
 <section id="contacto">
-    <h2>Contacto</h2>
-    <p><strong>Email:</strong> info@careerhub.com</p>
-    <p><strong>WhatsApp:</strong> +506 7259 5379</p>
+    <h2>
+        <span class="es">Contacto</span>
+        <span class="en">Contact</span>
+    </h2>
+    <p>
+        <span class="es"><strong>Email:</strong> info@careerhub.com</span>
+        <span class="en"><strong>Email:</strong> info@careerhub.com</span>
+    </p>
+    <p>
+        <span class="es"><strong>WhatsApp:</strong> +506 7259 5379</span>
+        <span class="en"><strong>WhatsApp:</strong> +506 7259 5379</span>
+    </p>
+</section>
+
+<!-- TESTIMONIOS AL FINAL -->
+<section id="testimonios">
+    <h2>
+        <span class="es">Testimonios</span>
+        <span class="en">Testimonials</span>
+    </h2>
+
+    <div class="testimonio">
+        <span class="es">
+            “El servicio de CareerHub me consiguió entrevistas muy rápido y sentí acompañamiento en todo el proceso.”
+        </span>
+        <span class="en">
+            “CareerHub helped me get interviews really fast and I felt supported through the whole process.”
+        </span>
+        <div class="autor">— Daniela M.</div>
+    </div>
+
+    <div class="testimonio">
+        <span class="es">
+            “Después de optimizar mi LinkedIn con CareerHub, empecé a recibir más visitas y mensajes de reclutadores.”
+        </span>
+        <span class="en">
+            “After optimizing my LinkedIn with CareerHub, I started getting more views and messages from recruiters.”
+        </span>
+        <div class="autor">— Fernando R.</div>
+    </div>
+
+    <div class="testimonio">
+        <span class="es">
+            “Las prácticas de entrevistas me dieron la confianza que necesitaba para lograr la oferta que quería.”
+        </span>
+        <span class="en">
+            “The interview practice sessions gave me the confidence I needed to land the offer I wanted.”
+        </span>
+        <div class="autor">— Sofía L.</div>
+    </div>
 </section>
 
 <footer>
@@ -335,14 +710,44 @@
 </footer>
 
 <!-- BOTÓN WHATSAPP -->
-<a href="https://wa.me/50672595379" class="whatsapp-btn" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+<a href="https://wa.me/50672595379" class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
 </a>
 
 <!-- BOTÓN INSTAGRAM -->
-<a href="https://www.instagram.com/careerhub.latam" class="insta-float" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+<a href="https://www.instagram.com/careerhub.latam" class="insta-float" target="_blank" aria-label="Instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
 </a>
+
+<!-- Instagram embed script -->
+<script async src="https://www.instagram.com/embed.js"></script>
+
+<script>
+    // Idioma por defecto
+    document.body.setAttribute('data-lang', 'es');
+
+    // Toggle de idioma
+    document.querySelectorAll('.lang-toggle button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            document.body.setAttribute('data-lang', lang);
+            document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+
+    // Carrusel servicios: flechas + scroll suave
+    function scrollCarousel(direction) {
+        const el = document.getElementById('services-carousel');
+        if (!el) return;
+        const card = el.querySelector('.service-card');
+        const cardWidth = card ? card.offsetWidth + 20 : 320;
+        el.scrollBy({
+            left: direction * cardWidth,
+            behavior: 'smooth'
+        });
+    }
+</script>
 
 </body>
 </html>
