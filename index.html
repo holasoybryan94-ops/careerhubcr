@@ -29,7 +29,7 @@
         line-height: 1.6;
     }
 
-    /* BILINGÜE: mostrar ES/EN según data-lang */
+    /* BILINGÜE */
     .es { display: inline; }
     .en { display: none; }
 
@@ -60,7 +60,7 @@
 
     /* LOGO — fade in suave y grande */
     header img {
-        width: 400px;
+        width: 420px;
         max-width: 95vw;
         height: auto;
         opacity: 0;
@@ -168,7 +168,7 @@
 
     .services-carousel {
         display: flex;
-        gap: 20px;
+        gap: 24px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         padding: 10px 5px 10px 5px;
@@ -184,12 +184,13 @@
     }
 
     .service-card {
-        flex: 0 0 280px;
-        max-width: 300px;
+        flex: 0 0 320px;
+        max-width: 340px;
+        min-height: 250px;
         background: #ffffff;
-        border-radius: 18px;
-        padding: 18px 18px 16px 18px;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+        border-radius: 22px;
+        padding: 20px 20px 18px 20px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
         scroll-snap-align: start;
         text-decoration: none;
         color: inherit;
@@ -200,20 +201,20 @@
     }
 
     .service-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.16);
+        transform: translateY(-6px);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.18);
     }
 
     .service-header {
         display: flex;
         align-items: center;
-        gap: 10px;
-        margin-bottom: 8px;
+        gap: 12px;
+        margin-bottom: 10px;
     }
 
     .service-pill {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
     }
     .pill-green { background:#00C853; }
@@ -223,15 +224,22 @@
     .pill-yellow { background:#FDD835; }
 
     .service-card h3 {
-        font-size: 1rem;
+        font-size: 1.05rem;
         margin: 0;
         color: var(--primary);
     }
 
     .service-card p {
         font-size: 0.9rem;
-        margin: 8px 0 14px 0;
+        margin: 8px 0 10px 0;
         color: #444;
+    }
+
+    .service-price {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: #333;
+        margin-bottom: 6px;
     }
 
     .service-cta {
@@ -252,23 +260,23 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 34px;
-        height: 34px;
+        width: 38px;
+        height: 38px;
         border-radius: 50%;
         border: none;
-        background: rgba(250,242,228,0.95);
+        background: rgba(250,242,228,0.98);
         box-shadow: 0 2px 6px rgba(0,0,0,0.18);
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         color: var(--primary);
         z-index: 10;
     }
 
-    .carousel-arrow.left { left: -5px; }
-    .carousel-arrow.right { right: -5px; }
+    .carousel-arrow.left { left: -8px; }
+    .carousel-arrow.right { right: -8px; }
 
     @media (max-width: 720px) {
         .carousel-arrow {
@@ -276,7 +284,61 @@
         }
     }
 
-    /* INSTAGRAM GRID (usa embed oficial) */
+    /* SECCIÓN PRECIOS */
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        margin-top: 30px;
+    }
+
+    .price-card {
+        background: #ffffff;
+        border-radius: 22px;
+        padding: 20px 22px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .price-title {
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 6px;
+        font-size: 1rem;
+    }
+
+    .price-amount {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 4px 0 10px 0;
+    }
+
+    .price-note {
+        font-size: 0.85rem;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .price-card a {
+        align-self: flex-start;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--primary);
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--primary);
+        transition: 0.2s;
+    }
+
+    .price-card a:hover {
+        background: var(--primary);
+        color: white;
+    }
+
+    /* INSTAGRAM GRID */
     .instagram-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -322,28 +384,6 @@
         background: #0a3c2f;
     }
 
-    /* CALENDLY CARD */
-    .calendly-wrapper {
-        max-width: 1000px;
-        margin: 0 auto;
-        background: rgba(255,255,255,0.85);
-        border-radius: 20px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-        padding: 20px;
-    }
-
-    .calendly-inline-widget {
-        min-width: 320px;
-        height: 650px;
-    }
-
-    .calendly-intro {
-        text-align: center;
-        font-size: 0.95rem;
-        margin-bottom: 18px;
-        color: #444;
-    }
-
     /* CONTACTO */
     #contacto p {
         text-align: center;
@@ -351,21 +391,67 @@
         margin-bottom: 6px;
     }
 
-    /* TESTIMONIOS AL FINAL */
-    .testimonio {
-        background: #ffffff;
-        padding: 25px;
-        border-radius: var(--radius);
-        box-shadow: 0 3px 10px rgba(0,0,0,0.07);
-        margin-bottom: 20px;
-        border-left: 6px solid var(--primary);
-        font-style: italic;
+    /* TESTIMONIOS – CARRUSEL GLASS */
+    .testimonial-carousel-wrapper {
+        position: relative;
+        margin-top: 20px;
     }
-    .testimonio .autor {
+
+    .testimonial-carousel {
+        display: flex;
+        gap: 24px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 10px 5px;
+        scroll-behavior: smooth;
+    }
+
+    .testimonial-carousel::-webkit-scrollbar {
+        height: 6px;
+    }
+    .testimonial-carousel::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,0.15);
+        border-radius: 999px;
+    }
+
+    .testimonial-card {
+        flex: 0 0 320px;
+        max-width: 360px;
+        background: rgba(255,255,255,0.25);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-radius: 22px;
+        padding: 20px 22px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        scroll-snap-align: start;
+        font-style: italic;
+        color: #333;
+        position: relative;
+    }
+
+    .testimonial-author {
+        margin-top: 14px;
         font-weight: 600;
         color: var(--primary);
-        margin-top: 10px;
         font-style: normal;
+    }
+
+    .testimonial-card::before {
+        content: "“";
+        position: absolute;
+        top: 10px;
+        left: 16px;
+        font-size: 32px;
+        color: rgba(0,0,0,0.1);
+    }
+
+    .testimonial-card::after {
+        content: "”";
+        position: absolute;
+        bottom: 10px;
+        right: 16px;
+        font-size: 32px;
+        color: rgba(0,0,0,0.1);
     }
 
     /* FOOTER */
@@ -413,7 +499,7 @@
 </style>
 </head>
 
-<body>
+<body data-lang="es">
 
 <!-- HEADER LOGO -->
 <header>
@@ -423,8 +509,8 @@
 <!-- NAV -->
 <nav>
     <a href="#servicios"><span class="es">Servicios</span><span class="en">Services</span></a>
+    <a href="#precios"><span class="es">Precios</span><span class="en">Pricing</span></a>
     <a href="#instagram"><span class="es">Instagram</span><span class="en">Instagram</span></a>
-    <a href="#agendar"><span class="es">Agenda</span><span class="en">Booking</span></a>
     <a href="#contacto"><span class="es">Contacto</span><span class="en">Contact</span></a>
     <a href="#testimonios"><span class="es">Testimonios</span><span class="en">Testimonials</span></a>
 
@@ -451,155 +537,306 @@
     </p>
 
     <div class="services-carousel-wrapper">
-        <button class="carousel-arrow left" onclick="scrollCarousel(-1)">‹</button>
+        <button class="carousel-arrow left" onclick="scrollCarousel('services-carousel', -1)">‹</button>
 
         <div class="services-carousel" id="services-carousel">
             <!-- 1 -->
             <a class="service-card" href="https://calendly.com/jobs-careerhub/personal-job-seeker?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
-                <div class="service-header">
-                    <span class="service-pill pill-green"></span>
-                    <h3>
-                        <span class="es">Personal Job Seeker – Suscripción Mensual</span>
-                        <span class="en">Personal Job Seeker – Monthly Subscription</span>
-                    </h3>
+                <div>
+                    <div class="service-header">
+                        <span class="service-pill pill-green"></span>
+                        <h3>
+                            <span class="es">Personal Job Seeker – Suscripción Mensual</span>
+                            <span class="en">Personal Job Seeker – Monthly Subscription</span>
+                        </h3>
+                    </div>
+                    <p>
+                        <span class="es">¿Querés conseguir trabajo pero no tenés tiempo para buscar? Nosotros hacemos la búsqueda por vos mes a mes.</span>
+                        <span class="en">Want a new job but no time to search? We manage your job hunt for you on a monthly basis.</span>
+                    </p>
                 </div>
-                <p>
-                    <span class="es">¿Querés conseguir trabajo pero no tenés tiempo para buscar? Nosotros hacemos la búsqueda por vos mes a mes.</span>
-                    <span class="en">Want a new job but no time to search? We manage your job hunt for you on a monthly basis.</span>
-                </p>
-                <span class="service-cta">
-                    <span class="es">Agendar</span><span class="en">Book now</span>
-                </span>
+                <div>
+                    <div class="service-price">$70 / <span class="es">mes</span><span class="en">month</span></div>
+                    <span class="service-cta">
+                        <span class="es">Agendar</span><span class="en">Book now</span>
+                    </span>
+                </div>
             </a>
 
             <!-- 2 -->
             <a class="service-card" href="https://calendly.com/jobs-careerhub/asesoria-con-caro?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
-                <div class="service-header">
-                    <span class="service-pill pill-pink"></span>
-                    <h3>
-                        <span class="es">Asesoría con Caro</span>
-                        <span class="en">Coaching Session with Caro</span>
-                    </h3>
+                <div>
+                    <div class="service-header">
+                        <span class="service-pill pill-pink"></span>
+                        <h3>
+                            <span class="es">Asesoría con Caro</span>
+                            <span class="en">Coaching Session with Caro</span>
+                        </h3>
+                    </div>
+                    <p>
+                        <span class="es">Sesión 1:1 para hablar de tu career path, dudas de empleabilidad y plan de acción personalizado.</span>
+                        <span class="en">1:1 session to review your career path, employability questions and a personalized action plan.</span>
+                    </p>
                 </div>
-                <p>
-                    <span class="es">Sesión 1:1 para hablar de tu career path, dudas de empleabilidad y plan de acción personalizado.</span>
-                    <span class="en">1:1 session to review your career path, employability questions and a personalized action plan.</span>
-                </p>
-                <span class="service-cta">
-                    <span class="es">Agendar</span><span class="en">Book now</span>
-                </span>
+                <div>
+                    <div class="service-price">$95</div>
+                    <span class="service-cta">
+                        <span class="es">Agendar</span><span class="en">Book now</span>
+                    </span>
+                </div>
             </a>
 
             <!-- 3 -->
             <a class="service-card" href="https://calendly.com/jobs-careerhub/3-sesiones-impulso-expres?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
-                <div class="service-header">
-                    <span class="service-pill pill-purple"></span>
-                    <h3>
-                        <span class="es">3 sesiones: Impulso Exprés</span>
-                        <span class="en">3 Sessions: Express Boost</span>
-                    </h3>
+                <div>
+                    <div class="service-header">
+                        <span class="service-pill pill-purple"></span>
+                        <h3>
+                            <span class="es">3 sesiones: Impulso Exprés</span>
+                            <span class="en">3 Sessions: Express Boost</span>
+                        </h3>
+                    </div>
+                    <p>
+                        <span class="es">Paquete intensivo para acelerar tu búsqueda: CV, LinkedIn y preparación de entrevistas.</span>
+                        <span class="en">Intensive package to accelerate your search: CV, LinkedIn and interview prep.</span>
+                    </p>
                 </div>
-                <p>
-                    <span class="es">Paquete intensivo para acelerar tu búsqueda: CV, LinkedIn y preparación de entrevistas.</span>
-                    <span class="en">Intensive package to accelerate your search: CV, LinkedIn and interview prep.</span>
-                </p>
-                <span class="service-cta">
-                    <span class="es">Agendar</span><span class="en">Book now</span>
-                </span>
+                <div>
+                    <div class="service-price">$135</div>
+                    <span class="service-cta">
+                        <span class="es">Agendar</span><span class="en">Book now</span>
+                    </span>
+                </div>
             </a>
 
             <!-- 4 -->
             <a class="service-card" href="https://calendly.com/jobs-careerhub/outplacement-camino-al-exito-laboral?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
-                <div class="service-header">
-                    <span class="service-pill pill-purple"></span>
-                    <h3>
-                        <span class="es">Outplacement: Camino al Éxito Laboral</span>
-                        <span class="en">Outplacement: Your Path to Career Success</span>
-                    </h3>
+                <div>
+                    <div class="service-header">
+                        <span class="service-pill pill-purple"></span>
+                        <h3>
+                            <span class="es">Outplacement: Camino al Éxito Laboral</span>
+                            <span class="en">Outplacement: Your Path to Career Success</span>
+                        </h3>
+                    </div>
+                    <p>
+                        <span class="es">Acompañamiento completo para transicionar de empleo: estrategia, marca personal y entrevistas.</span>
+                        <span class="en">Full support to transition between jobs: strategy, personal branding and mock interviews.</span>
+                    </p>
                 </div>
-                <p>
-                    <span class="es">Acompañamiento completo para transicionar de empleo: estrategia, marca personal y entrevistas.</span>
-                    <span class="en">Full support to transition between jobs: strategy, personal branding and mock interviews.</span>
-                </p>
-                <span class="service-cta">
-                    <span class="es">Agendar</span><span class="en">Book now</span>
-                </span>
+                <div>
+                    <div class="service-price">$550</div>
+                    <span class="service-cta">
+                        <span class="es">Agendar</span><span class="en">Book now</span>
+                    </span>
+                </div>
             </a>
 
             <!-- 5 -->
             <a class="service-card" href="https://calendly.com/jobs-careerhub/crear-un-nuevo-cv-ingles?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
-                <div class="service-header">
-                    <span class="service-pill pill-blue"></span>
-                    <h3>
-                        <span class="es">Crear un Nuevo CV</span>
-                        <span class="en">Create a New CV (English)</span>
-                    </h3>
+                <div>
+                    <div class="service-header">
+                        <span class="service-pill pill-blue"></span>
+                        <h3>
+                            <span class="es">Crear un Nuevo CV</span>
+                            <span class="en">Create a New CV (English)</span>
+                        </h3>
+                    </div>
+                    <p>
+                        <span class="es">Diseñamos un CV atractivo, claro y alineado a las vacantes que querés aplicar.</span>
+                        <span class="en">We build a strong, clear CV in English aligned with the roles you want.</span>
+                    </p>
                 </div>
-                <p>
-                    <span class="es">Diseñamos un CV atractivo, claro y alineado a las vacantes que querés aplicar.</span>
-                    <span class="en">We build a strong, clear CV in English aligned with the roles you want.</span>
-                </p>
-                <span class="service-cta">
-                    <span class="es">Agendar</span><span class="en">Book now</span>
-                </span>
+                <div>
+                    <div class="service-price">$65</div>
+                    <span class="service-cta">
+                        <span class="es">Agendar</span><span class="en">Book now</span>
+                    </span>
+                </div>
             </a>
 
             <!-- 6 -->
             <a class="service-card" href="https://calendly.com/jobs-careerhub/linkedin-creando-un-perfil-efectivo?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1" target="_blank" rel="noopener">
-                <div class="service-header">
-                    <span class="service-pill pill-blue"></span>
-                    <h3>
-                        <span class="es">LinkedIn: Creando un Perfil Efectivo</span>
-                        <span class="en">LinkedIn: Building an Effective Profile</span>
-                    </h3>
+                <div>
+                    <div class="service-header">
+                        <span class="service-pill pill-blue"></span>
+                        <h3>
+                            <span class="es">LinkedIn: Creando un Perfil Efectivo</span>
+                            <span class="en">LinkedIn: Building an Effective Profile</span>
+                        </h3>
+                    </div>
+                    <p>
+                        <span class="es">Optimizamos tu perfil para que recruiters y empresas te encuentren más rápido.</span>
+                        <span class="en">We optimize your LinkedIn so recruiters and companies can find you faster.</span>
+                    </p>
                 </div>
-                <p>
-                    <span class="es">Optimizamos tu perfil para que recruiters y empresas te encuentren más rápido.</span>
-                    <span class="en">We optimize your LinkedIn so recruiters and companies can find you faster.</span>
-                </p>
-                <span class="service-cta">
-                    <span class="es">Agendar</span><span class="en">Book now</span>
-                </span>
+                <div>
+                    <div class="service-price">$65</div>
+                    <span class="service-cta">
+                        <span class="es">Agendar</span><span class="en">Book now</span>
+                    </span>
+                </div>
             </a>
 
             <!-- 7 -->
             <a class="service-card" href="https://calendly.com/jobs-careerhub/entrevistas?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
-                <div class="service-header">
-                    <span class="service-pill pill-yellow"></span>
-                    <h3>
-                        <span class="es">Preparación para Entrevistas</span>
-                        <span class="en">Interview Preparation</span>
-                    </h3>
+                <div>
+                    <div class="service-header">
+                        <span class="service-pill pill-yellow"></span>
+                        <h3>
+                            <span class="es">Preparación para Entrevistas</span>
+                            <span class="en">Interview Preparation</span>
+                        </h3>
+                    </div>
+                    <p>
+                        <span class="es">Te ayudamos con estructura de respuestas, preguntas clave y manejo de nervios.</span>
+                        <span class="en">We help with answer structure, key questions and confidence for your interviews.</span>
+                    </p>
                 </div>
-                <p>
-                    <span class="es">Te ayudamos con estructura de respuestas, preguntas clave y manejo de nervios.</span>
-                    <span class="en">We help with answer structure, key questions and confidence for your interviews.</span>
-                </p>
-                <span class="service-cta">
-                    <span class="es">Agendar</span><span class="en">Book now</span>
-                </span>
+                <div>
+                    <div class="service-price">$85</div>
+                    <span class="service-cta">
+                        <span class="es">Agendar</span><span class="en">Book now</span>
+                    </span>
+                </div>
             </a>
 
             <!-- 8 -->
             <a class="service-card" href="https://calendly.com/jobs-careerhub/practica-para-entrevistas?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank" rel="noopener">
-                <div class="service-header">
-                    <span class="service-pill pill-yellow"></span>
-                    <h3>
-                        <span class="es">Práctica para Entrevistas + Feedback</span>
-                        <span class="en">Interview Practice + Feedback</span>
-                    </h3>
+                <div>
+                    <div class="service-header">
+                        <span class="service-pill pill-yellow"></span>
+                        <h3>
+                            <span class="es">Práctica para Entrevistas + Feedback</span>
+                            <span class="en">Interview Practice + Feedback</span>
+                        </h3>
+                    </div>
+                    <p>
+                        <span class="es">Simulación real de entrevista con feedback detallado para pulir tus respuestas.</span>
+                        <span class="en">Realistic mock interview with detailed feedback to polish your answers.</span>
+                    </p>
                 </div>
-                <p>
-                    <span class="es">Simulación real de entrevista con feedback detallado para pulir tus respuestas.</span>
-                    <span class="en">Realistic mock interview with detailed feedback to polish your answers.</span>
-                </p>
-                <span class="service-cta">
-                    <span class="es">Agendar</span><span class="en">Book now</span>
-                </span>
+                <div>
+                    <div class="service-price">$50</div>
+                    <span class="service-cta">
+                        <span class="es">Agendar</span><span class="en">Book now</span>
+                    </span>
+                </div>
             </a>
         </div>
 
-        <button class="carousel-arrow right" onclick="scrollCarousel(1)">›</button>
+        <button class="carousel-arrow right" onclick="scrollCarousel('services-carousel', 1)">›</button>
+    </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios">
+    <h2>
+        <span class="es">Planes y Precios</span>
+        <span class="en">Plans & Pricing</span>
+    </h2>
+
+    <p class="services-intro">
+        <span class="es">Invertí en tu carrera con el plan que mejor se adapta a lo que necesitás hoy.</span>
+        <span class="en">Invest in your career with the plan that best fits where you are today.</span>
+    </p>
+
+    <div class="pricing-grid">
+        <div class="price-card">
+            <div>
+                <div class="price-title">Personal Job Seeker – Suscripción Mensual</div>
+                <div class="price-amount">$70 / <span class="es">mes</span><span class="en">month</span></div>
+                <p class="price-note es">Ideal si querés delegar la búsqueda de empleo y avanzar de forma constante.</p>
+                <p class="price-note en">Ideal if you want to delegate your job search and keep constant momentum.</p>
+            </div>
+            <a href="https://calendly.com/jobs-careerhub/personal-job-seeker?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank">
+                <span class="es">Ver detalles</span><span class="en">See details</span>
+            </a>
+        </div>
+
+        <div class="price-card">
+            <div>
+                <div class="price-title">Asesoría con Caro</div>
+                <div class="price-amount">$95</div>
+                <p class="price-note es">Sesión estratégica 1:1 para tomar decisiones claras sobre tu próximo paso.</p>
+                <p class="price-note en">1:1 strategic session to clarify your next step.</p>
+            </div>
+            <a href="https://calendly.com/jobs-careerhub/asesoria-con-caro?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank">
+                <span class="es">Ver detalles</span><span class="en">See details</span>
+            </a>
+        </div>
+
+        <div class="price-card">
+            <div>
+                <div class="price-title">3 sesiones: Impulso Exprés</div>
+                <div class="price-amount">$135</div>
+                <p class="price-note es">Pack intensivo de 3 sesiones para darle un giro rápido a tu búsqueda.</p>
+                <p class="price-note en">Intensive 3-session pack to quickly boost your job search.</p>
+            </div>
+            <a href="https://calendly.com/jobs-careerhub/3-sesiones-impulso-expres?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank">
+                <span class="es">Ver detalles</span><span class="en">See details</span>
+            </a>
+        </div>
+
+        <div class="price-card">
+            <div>
+                <div class="price-title">Outplacement: Camino al Éxito Laboral</div>
+                <div class="price-amount">$550</div>
+                <p class="price-note es">Programa completo de acompañamiento para tu transición laboral.</p>
+                <p class="price-note en">Full outplacement program to support your next career move.</p>
+            </div>
+            <a href="https://calendly.com/jobs-careerhub/outplacement-camino-al-exito-laboral?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank">
+                <span class="es">Ver detalles</span><span class="en">See details</span>
+            </a>
+        </div>
+
+        <div class="price-card">
+            <div>
+                <div class="price-title">Crear un Nuevo CV</div>
+                <div class="price-amount">$65</div>
+                <p class="price-note es">CV atractivo y profesional, listo para aplicar a tus vacantes objetivo.</p>
+                <p class="price-note en">Professional and attractive CV, ready to apply for target roles.</p>
+            </div>
+            <a href="https://calendly.com/jobs-careerhub/crear-un-nuevo-cv-ingles?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank">
+                <span class="es">Ver detalles</span><span class="en">See details</span>
+            </a>
+        </div>
+
+        <div class="price-card">
+            <div>
+                <div class="price-title">LinkedIn: Creando un Perfil Efectivo</div>
+                <div class="price-amount">$65</div>
+                <p class="price-note es">Optimización completa de tu perfil para que te encuentren más y mejor.</p>
+                <p class="price-note en">Full optimization of your profile so recruiters can find you easier.</p>
+            </div>
+            <a href="https://calendly.com/jobs-careerhub/linkedin-creando-un-perfil-efectivo?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1" target="_blank">
+                <span class="es">Ver detalles</span><span class="en">See details</span>
+            </a>
+        </div>
+
+        <div class="price-card">
+            <div>
+                <div class="price-title">Preparación para Entrevistas</div>
+                <div class="price-amount">$85</div>
+                <p class="price-note es">Sesión enfocada en estructura de respuestas y preguntas frecuentes.</p>
+                <p class="price-note en">Session focused on answer structure and common interview questions.</p>
+            </div>
+            <a href="https://calendly.com/jobs-careerhub/entrevistas?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank">
+                <span class="es">Ver detalles</span><span class="en">See details</span>
+            </a>
+        </div>
+
+        <div class="price-card">
+            <div>
+                <div class="price-title">Práctica para Entrevistas + Feedback</div>
+                <div class="price-amount">$50</div>
+                <p class="price-note es">Simulación real con feedback detallado para pulir cada respuesta.</p>
+                <p class="price-note en">Real mock interview with detailed feedback on each answer.</p>
+            </div>
+            <a href="https://calendly.com/jobs-careerhub/practica-para-entrevistas?embed_domain=holasoybryan94-ops.github.io&embed_type=Inline&back=1&month=2025-11" target="_blank">
+                <span class="es">Ver detalles</span><span class="en">See details</span>
+            </a>
+        </div>
     </div>
 </section>
 
@@ -629,28 +866,6 @@
     </a>
 </section>
 
-<!-- AGENDA (CALENDLY) -->
-<section id="agendar">
-    <h2>
-        <span class="es">Agenda tu sesión</span>
-        <span class="en">Book your session</span>
-    </h2>
-
-    <p class="calendly-intro">
-        <span class="es">Elegí el servicio que más te interese desde el carrusel o reservá directamente en la agenda general.</span>
-        <span class="en">Pick the service you prefer from the carousel or book directly in the general calendar.</span>
-    </p>
-
-    <div class="calendly-wrapper">
-        <div 
-            class="calendly-inline-widget" 
-            data-url="https://calendly.com/jobs-careerhub/" >
-        </div>
-    </div>
-
-    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-</section>
-
 <!-- CONTACTO -->
 <section id="contacto">
     <h2>
@@ -667,41 +882,49 @@
     </p>
 </section>
 
-<!-- TESTIMONIOS AL FINAL -->
+<!-- TESTIMONIOS EN CARRUSEL -->
 <section id="testimonios">
     <h2>
         <span class="es">Testimonios</span>
         <span class="en">Testimonials</span>
     </h2>
 
-    <div class="testimonio">
-        <span class="es">
-            “El servicio de CareerHub me consiguió entrevistas muy rápido y sentí acompañamiento en todo el proceso.”
-        </span>
-        <span class="en">
-            “CareerHub helped me get interviews really fast and I felt supported through the whole process.”
-        </span>
-        <div class="autor">— Daniela M.</div>
-    </div>
+    <div class="testimonial-carousel-wrapper">
+        <button class="carousel-arrow left" onclick="scrollCarousel('testimonial-carousel', -1)">‹</button>
 
-    <div class="testimonio">
-        <span class="es">
-            “Después de optimizar mi LinkedIn con CareerHub, empecé a recibir más visitas y mensajes de reclutadores.”
-        </span>
-        <span class="en">
-            “After optimizing my LinkedIn with CareerHub, I started getting more views and messages from recruiters.”
-        </span>
-        <div class="autor">— Fernando R.</div>
-    </div>
+        <div class="testimonial-carousel" id="testimonial-carousel">
+            <div class="testimonial-card">
+                <span class="es">
+                    El servicio de CareerHub me consiguió entrevistas muy rápido y sentí acompañamiento en todo el proceso.
+                </span>
+                <span class="en">
+                    CareerHub helped me get interviews really fast and I felt supported through the whole process.
+                </span>
+                <div class="testimonial-author">— Daniela M.</div>
+            </div>
 
-    <div class="testimonio">
-        <span class="es">
-            “Las prácticas de entrevistas me dieron la confianza que necesitaba para lograr la oferta que quería.”
-        </span>
-        <span class="en">
-            “The interview practice sessions gave me the confidence I needed to land the offer I wanted.”
-        </span>
-        <div class="autor">— Sofía L.</div>
+            <div class="testimonial-card">
+                <span class="es">
+                    Después de optimizar mi LinkedIn con CareerHub, empecé a recibir más visitas y mensajes de reclutadores.
+                </span>
+                <span class="en">
+                    After optimizing my LinkedIn with CareerHub, I started getting more views and messages from recruiters.
+                </span>
+                <div class="testimonial-author">— Fernando R.</div>
+            </div>
+
+            <div class="testimonial-card">
+                <span class="es">
+                    Las prácticas de entrevistas me dieron la confianza que necesitaba para lograr la oferta que quería.
+                </span>
+                <span class="en">
+                    The interview practice sessions gave me the confidence I needed to land the offer I wanted.
+                </span>
+                <div class="testimonial-author">— Sofía L.</div>
+            </div>
+        </div>
+
+        <button class="carousel-arrow right" onclick="scrollCarousel('testimonial-carousel', 1)">›</button>
     </div>
 </section>
 
@@ -723,10 +946,7 @@
 <script async src="https://www.instagram.com/embed.js"></script>
 
 <script>
-    // Idioma por defecto
-    document.body.setAttribute('data-lang', 'es');
-
-    // Toggle de idioma
+    // Toggle idioma
     document.querySelectorAll('.lang-toggle button').forEach(btn => {
         btn.addEventListener('click', () => {
             const lang = btn.dataset.lang;
@@ -736,12 +956,12 @@
         });
     });
 
-    // Carrusel servicios: flechas + scroll suave
-    function scrollCarousel(direction) {
-        const el = document.getElementById('services-carousel');
+    // Función genérica para carruseles
+    function scrollCarousel(id, direction) {
+        const el = document.getElementById(id);
         if (!el) return;
-        const card = el.querySelector('.service-card');
-        const cardWidth = card ? card.offsetWidth + 20 : 320;
+        const card = el.querySelector('.service-card, .testimonial-card');
+        const cardWidth = card ? card.offsetWidth + 24 : 320;
         el.scrollBy({
             left: direction * cardWidth,
             behavior: 'smooth'
